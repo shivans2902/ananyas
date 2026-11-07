@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ananya's Little Love Universe 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+:root{--pink:#e879a5;--deep:#bd4779;--ink:#85445f;--line:#f7cbdc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;font-family:'DM Sans',sans-serif;color:var(--ink);text-align:center;background:linear-gradient(135deg,#fff8fb,#ffe6ef,#fff,#fce0eb);background-size:300% 300%;animation:bg 16s ease infinite;overflow-x:hidden}
+@keyframes bg{50%{background-position:100% 70%}}
+.floating{position:fixed;top:-40px;pointer-events:none;z-index:0;animation:fall linear forwards;opacity:.75}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.shell{position:relative;z-index:1;width:min(900px,calc(100% - 28px));margin:auto;padding:25px 0 42px}
+.topline{display:flex;justify-content:space-between;align-items:center;margin:0 4px 14px;color:#b46c89;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.progress{height:7px;background:#ffffffb8;border-radius:99px;overflow:hidden;margin-bottom:14px}
+.progress span{display:block;height:100%;width:12.5%;background:linear-gradient(90deg,#f3a9c4,#d95e91);border-radius:99px;transition:width .35s}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding:3px 2px 13px;scrollbar-width:thin}
+.tab{flex:1;min-width:76px;padding:10px 7px;border-radius:14px;background:#ffffffa8;color:#b87993;font-size:12px;font-weight:700;border:1px solid transparent;white-space:nowrap}
+.tab.active{background:#fff;color:var(--deep);border-color:#f3b6ce;box-shadow:0 5px 15px #c85b8518}
+.panel{display:none;animation:appear .35s ease}.panel.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.card{background:#ffffffdf;border:1px solid #ffd0e0;border-radius:28px;padding:clamp(23px,5vw,42px) clamp(16px,5vw,38px);box-shadow:0 15px 45px #c85b8518;backdrop-filter:blur(12px);margin:8px 0 18px}
+h1,h2{font-family:'Playfair Display',serif;color:#d64f85}
+h1{font-size:clamp(37px,8vw,62px);margin:12px 0}
+h2{font-size:clamp(25px,5vw,34px);margin-bottom:16px}
+h3{margin:15px 0;color:#c45b84}
+p{line-height:1.85;font-size:15px}
+.hero{padding:25px 0 18px}
+.big-heart{font-size:64px;animation:beat 1.2s infinite}
+@keyframes beat{50%{transform:scale(1.16)}}
+button{background:linear-gradient(135deg,#ed91b4,#d95e91);color:white;border:0;padding:12px 21px;margin:7px 4px;border-radius:30px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 7px 16px #d95e9128;transition:.2s}
+button:hover{transform:translateY(-2px);filter:saturate(1.1)}
+button:disabled{opacity:.5;cursor:default;transform:none}
+.secondary{background:#fff;color:#c45b84;border:1px solid #f2b8ce;box-shadow:none}
+.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:12px}.navrow button{min-width:112px}
+.hidden{display:none!important}
+.letter{background:#fff3f7;border:1px solid #ffe0eb;border-radius:20px;padding:clamp(17px,4vw,25px);line-height:2;margin-top:20px;white-space:pre-line;text-align:left;overflow-wrap:anywhere;font-size:14px}
+.diyaa{font-size:34px;letter-spacing:8px;margin:12px 0}
+.music-note{font-size:42px;animation:spin 5s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.music-player{background:#fff3f7;border:1px solid #f7cbdc;border-radius:22px;padding:22px;margin:20px auto;max-width:560px}
+.music-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:6px}
+.music-controls button{min-width:105px}
+.track-progress{width:min(100%,440px);accent-color:#e978a2;margin:12px 0}
+.volume{width:120px;accent-color:#e978a2;vertical-align:middle}
+.small{font-size:12px;color:#bd7793;margin-top:10px}
+.photo-frame{background:#fff3f7;border:2px solid #f5bfd3;border-radius:22px;padding:12px;margin:22px auto 8px;max-width:540px}
+.photo-frame img{display:block;width:100%;height:auto;max-height:75vh;object-fit:contain;object-position:center;border-radius:14px;background:#fff}
+.photo-caption{font-family:'Playfair Display',serif;color:#c45b84;font-size:19px;margin:13px 5px 5px}
+.game-board{position:relative;max-width:600px;height:310px;margin:20px auto;background:linear-gradient(145deg,#fff1f7,#ffe0ed);border:2px dashed #efa0bc;border-radius:22px;overflow:hidden;touch-action:manipulation}
+.game-heart{position:absolute;font-size:35px;cursor:pointer;user-select:none;filter:drop-shadow(0 5px 6px #d95e9133);animation:pop .25s ease}
+@keyframes pop{from{transform:scale(.4)}to{transform:scale(1)}}
+.game-stats{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-weight:700;color:#bd4779;margin:13px}
+.game-message{min-height:30px;font-weight:700;color:#bd4779;margin-top:12px}
+.quiz-box{max-width:620px;margin:20px auto 0;background:#fff3f7;border:1px solid #f7cbdc;border-radius:22px;padding:22px}
+.quiz-count{font-size:12px;font-weight:700;letter-spacing:.08em;color:#bd7793}
+.quiz-question{font-family:'Playfair Display',serif;font-size:23px;color:#c34d80;margin:13px 0}
+.quiz-option{display:block;width:100%;max-width:490px;margin:10px auto;background:white;color:#a64c72;border:1px solid #f3bfd2;box-shadow:none;text-align:left;border-radius:15px}
+.quiz-option.selected{background:#ffe3ef;border-color:#dc75a0}
+.quiz-feedback{min-height:46px;line-height:1.7;margin:14px auto;color:#bd4779;font-weight:600}
+footer{padding:25px 10px;color:#b46c89}
+@media(max-width:520px){.tab{min-width:72px;font-size:11px;padding:10px 6px}.navrow button{min-width:0;flex:1}.game-board{height:280px}.quiz-question{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topline"><span>♡ made with love</span><span id="stepLabel">Chapter 1 of 8</span></div>
+  <div class="progress"><span id="progressBar"></span></div>
+  <nav class="tabs" aria-label="Love story chapters">
+    <button class="tab active" data-tab="0">🏡 Start</button>
+    <button class="tab" data-tab="1">🪔 Diwali</button>
+    <button class="tab" data-tab="2">💌 Letter</button>
+    <button class="tab" data-tab="3">🎵 Song</button>
+    <button class="tab" data-tab="4">💖 Game</button>
+    <button class="tab" data-tab="5">🎀 Quiz</button>
+    <button class="tab" data-tab="6">📸 Memories</button>
+    <button class="tab" data-tab="7">🎁 Surprise</button>
+  </nav>
+
+  <main>
+    <section class="panel active" id="panel-0">
+      <div class="card hero">
+        <div class="big-heart">💗</div>
+        <p>WELCOME TO YOUR LITTLE WORLD,</p>
+        <h1>Ananya 🌷</h1>
+        <p>A tiny universe made with love, little surprises, endless affection and one silly boy named Shivans.</p>
+        <p style="margin-top:14px">I made this little journey just for you, babyyyy. Every page has a tiny piece of my heart. 💕</p>
+        <div class="letter">
+Happyyy diwaliii too myyy brightest star 🥺❤ joo mujhee tbb roshniii dikhatii haii jabb merii lifee poori andheree mee chalii jaatii haii 🎀✨
+
+haan uss insaaan ko maii bht tangg kartaa hu lekin woo kabhi merii side nhi chorti haii 😔💗
+
+ananyaaa babyyyy Happyyy diwaliii once again.
+
+I just tried to makee u happyy byy somee way meriii jaan aage aur bhi surprises haii dekhh kee jaana babuuu
+
+I lovee youuu jaan 😋💋💋😭🌸
+        </div>
+        <button onclick="goTo(1)">Start our little journey 💌</button>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-1">
+      <div class="card">
+        <div class="diyaa">🪔 ✨ 🪔</div>
+        <h1 style="font-size:clamp(36px,8vw,58px)">Happy Diwali, Babyyyy! 💖</h1>
+        <p>May your life always glow brighter than a thousand diyas, your smile shine like fireworks, and your heart stay filled with all the happiness in the universe.</p>
+        <p style="margin-top:15px">You are my favourite light, my sweetest blessing and the prettiest part of every celebration. I wish I could be right beside you, holding your hand, watching the lights and stealing a thousand cute moments with you. 🥹</p>
+        <h2 style="margin-top:20px">I love you so, so muchhh! ❤️</h2>
+        <div style="font-size:30px;letter-spacing:5px;margin:15px 0">💗 💕 💖 💞 💘</div>
+        <p>Forever your biggest fan,</p><h3>Shivans 🫶🏻</h3>
+        <div class="letter">
+A Little Something From Shivans ❤️
+
+My Dearest Ananya, ❤️
+
+I don't know how to put everything I feel into words, but I know one thing — having you in my life is one of my favourite things.
+
+Your smile is my favourite view. Your voice is my favourite sound. And your happiness is something I always want to protect.
+
+I know we aren't perfect, and sometimes things aren't easy, but I never want you to forget how special you are to me.
+
+I don't just want beautiful moments with you. I want ordinary days, silly fights, random laughs, late-night conversations and thousands of memories.
+
+Thank you for being YOU.
+
+With all my love,
+Your Shivans ❤️
+
+P.S. You are stuck with me! 😂💗
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-2">
+      <div class="card">
+        <h2>💌 A Letter From Shivans</h2>
+        <p>Babyyy, this one is especially for you. Read every word, my jaan. 🥺❤️</p>
+        <button id="letterBtn" onclick="toggleLetter()">Open your letter 💗</button>
+        <div id="letter" class="hidden letter">
+MYY DEAR ANANYAAA 💋💗,
+FIRST OF ALL HAPPYYY DIWALIII MERIII JAAN ❤🌸,
+I LOVEE YOUU SOO MUCHH MERAA BABUUU 💗💋 MERAA BACCHAAA 😭🫀 MERII PYAARII SII JAANUUU 🎀🥺 MERIII ZINDAGIIII ❤⭐🧿 I LOVEE YOUUU ,
+
+Babyyy haan ik aap merii wajahhh se bht pareshaan hotee hoo maiii aapko bht tangg kartaa huu 💗⭐ but ananyaaa honestly I'm glad to meet youu babyyy aap kabhiii meraa saath nahi chortiii humeshaa aap mujhe smbhaltiii ho chahe situation kaisii bhii ho ek diye ki tarah mujhe humeshaa roshnii dikhaati ho babuuu aap😭🫀bhtt pyaariii bht cuteeee and bhtt zydaaa acchiii hoo babuuu 🎀💋 aapkiii jitniii taareeff karuunn utnii kamm haiii hum donoo kitnaa ladte haii kitna jhagadtee haii lekin aap humeshaa mujhee galee se lagakee rakhtee hoo 😋🥺 humeshaa meriii khushiyon kaa dhyaan rkhtii hoo aur mujhe kabhii ronee nahi detii hoo babuuuu aapkaa mere upar bht saara aehsaan haii 🧿❤ uk whatt youu aree what actually i wanted in myy lifeee ananyaaa babyyy aapne mere liyee bht kuchh kiyaa haii 😋💗 physically mentally financiallyy har tareekee see aapne mujhe bht support kiyaa haii hr cheez mee 😭🌸 jahaa prr poori duniyaa mujhe akelaa chordetiii haii waha parr aap aajatii ho meraa support karne mujhe smbhalne mujhee pyaar karne 🫀⭐ mujhe khudse chipkaa kee yee smjhane kii koii ho yaa naa ho aap hoo meree saath 😔😔 babyyy uk whatt acchiii situationss mee tohh sabb saath dee letee haiii sacchaa pyaar tohh whii hainaa jo buriii situationss mee bhii utnaa hi rahe jitna acchii mee 😭❤ babuuu ik aap bhtt pareshaan ho ghar see mujhse merii backchodiyoo see still youu aren't giving upp 😔💔 you're veryy strong and actually when i see youu i genuinely thinkk aapmeee kuchhh nhii bht kuchh khaas haii yrr 😭🫀 ananyaaa i lovee youu babuuu, i lovee youuu soo muchhhh 💋🎀 aapnee mujhee tabb smbhaala shyd jabb maii ekdum se aisaa thaa ki mujhe kisi see koi farak nahii pdtaa aapne haan bolkrr meraa wo sapnaa poora kiyaa joo meraa 9th mee lovee at first sight dekhkeee bana thaa 😭💗 i just wanted to meet u lovee youuu and to spend myy rest of lifee withh youu 🌸😋 aisee hiii lifee mee problems aayengii hum donoo unkoo saathmee face karengee sortt karengee ek dusre ko smjhtee rahenge btate rahenge situationss shiii krtee rahengee and finallyyy a day will comeee jabb hum donoo ekk dusree kee hojayengee sbkii nazar mee bhiii 😭💗⭐ ik aap mujhsee bht pyaar kartii ho and iskaa aehsaan maii kabhi nhi chukaa saktaa uk what babuuu aapko dekhhh kee ek alag hi pyaar aata haii aapke liyee babyyy jo shydd kabhii naa kisi ke liyee aaya hai naa hii aayegaaa 😝🫀
+
+I lovee youuu soo muchhh babuuu 👀💗
+I lovee youuu myy wifeyyy, 😭❤
+I lovee youuuu myyy bacchaaa 🎀💋💋💋
+I lovee youuu soo muchh meri jaan 🌹🧿
+I lovee youuu babyyy 💗😭
+I lovee youuu myyy sweetheart 👉🏻👈🏻🌙🥀
+I lovee youuu sooo sooo sooo muchhh ananyaaaaaaa <3 ❤👀
+
+Again Happyyy diwaliiii meriii jaan 😭❤⭐
+I wishhh aap mujhe maaf krdoo babuuu
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-3">
+      <div class="card">
+        <div class="music-note">🎵</div>
+        <h2>Our Song, Forever ♾️</h2>
+        <p>“I Love You Till Infinity” — because this song reminds me of you. ❤️</p>
+        <div class="music-player">
+          <h3>Jaymes Young — Infinity</h3>
+          <p class="small">A little soundtrack for our little universe 💗</p>
+          <div class="music-controls">
+            <button id="playButton" onclick="toggleMusic()">▶ Play our song</button>
+            <button class="secondary" onclick="stopMusic()">■ Stop</button>
+          </div>
+          <!-- Updated with a direct working audio stream URL -->
+          <audio id="music" preload="metadata">
+            <source src="https://cdnsongs.com/music/data/English/202108/Infinity/128/Infinity_1.mp3" type="audio/mpeg">
+            Your browser does not support audio playback.
+          </audio>
+          <div>
+            <input class="track-progress" id="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Song progress">
+          </div>
+          <div class="small"><span id="currentTime">0:00</span> / <span id="duration">3:59</span></div>
+          <p style="margin-top:12px">Volume: <input class="volume" type="range" min="0" max="1" step="0.05" value="0.7" id="volume"></p>
+          <p class="small" id="musicStatus">Press play whenever you're ready, babyyy. 🎀</p>
+        </div>
+        <p>Some songs are just songs. This one is ours. 💞</p>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-4">
+      <div class="card">
+        <h2>💖 Catch My Love!</h2>
+        <p>Catch 12 falling hearts before the timer runs out. Every heart is one more reason I love you! 🥺</p>
+        <div class="game-stats">
+          <span>💗 Hearts: <span id="gameScore">0</span>/12</span>
+          <span>⏳ Time: <span id="gameTime">20</span>s</span>
+        </div>
+        <button id="gameStart" onclick="startGame()">Start catching hearts 💘</button>
+        <div class="game-board" id="gameBoard" aria-label="Heart catching game">
+          <p id="gameIntro" style="padding:100px 15px;color:#bd7793">Your hearts will appear here. Be quick, babyyy! 💗</p>
+        </div>
+        <p class="game-message" id="gameMessage">Ready when you are, my favourite girl! 🌷</p>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-5">
+      <div class="card">
+        <h2>🎀 The Ananya & Shivans Quiz</h2>
+        <p>Five cute little questions. No pressure — just choose what feels right. Your prize is unlimited love! 💋</p>
+        <div class="quiz-box">
+          <div class="quiz-count" id="quizCount">QUESTION 1 OF 5</div>
+          <div class="quiz-question" id="quizQuestion">Loading our little quiz...</div>
+          <div id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback"></p>
+          <button id="quizNext" class="hidden" onclick="nextQuiz()">Next question 💕</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-6">
+      <div class="card">
+        <h2>📸 Our Little Memory Corner</h2>
+        <p>One of my favourite pictures of us. I wish I could pause this moment and keep it forever. 🥹❤️</p>
+        <div class="photo-frame">
+          <!-- Updated with your uploaded image URL -->
+          <img src="https://images.unsplash.com/photo-1518568814500-bf09bb4d5758?q=80&w=1000&auto=format&fit=crop" alt="A favourite photo of Ananya and Shivans">
+          <div class="photo-caption">My favourite place is right beside you. 💗</div>
+        </div>
+        <p class="small">One picture, a thousand feelings. ♾️</p>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-7">
+      <div class="card">
+        <h2>🎁 One Last Surprise</h2>
+        <p>Ananya, there's one question I want to ask you...</p>
+        <button onclick="finalSurprise()">Click to discover ❤️</button>
+        <div id="final" class="hidden">
+          <div class="big-heart">💍</div>
+          <h1 style="font-size:clamp(32px,7vw,52px)">Will You Stay My Favourite Person Forever?</h1>
+          <p>Through every season, every distance, every smile and every little adventure... I want to keep choosing you.</p>
+          <h2 style="margin-top:18px">Love You Till Infinity ♾️</h2>
+          <h3>Forever Yours, Shivans ❤️</h3>
+          <div style="font-size:30px">💗 💕 💖 💞 💘</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="navrow">
+    <button class="secondary" id="prevBtn" onclick="changeTab(-1)" disabled>← Previous</button>
+    <button id="nextBtn" onclick="changeTab(1)">Next chapter →</button>
+  </div>
+  <footer>
+    <div class="big-heart" style="font-size:42px">💕</div>
+    <p>Made with 1000% love by Shivans</p>
+    <p>For his favourite girl, Ananya 🌸</p>
+    <p class="small">One girl. One silly boy. Infinite love.</p>
+  </footer>
+</div>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')],panels=[...document.querySelectorAll('.panel')];
+let current=0;
+function goTo(index){
+  current=Math.max(0,Math.min(7,index));
+  tabs.forEach((t,i)=>t.classList.toggle('active',i===current));
+  panels.forEach((p,i)=>p.classList.toggle('active',i===current));
+  document.getElementById('stepLabel').textContent=`Chapter ${current+1} of 8`;
+  document.getElementById('progressBar').style.width=((current+1)/8*100)+'%';
+  document.getElementById('prevBtn').disabled=current===0;
+  document.getElementById('nextBtn').textContent=current===7?'Back to start ↺':'Next chapter →';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function changeTab(direction){if(current===7&&direction===1)goTo(0);else goTo(current+direction)}
+tabs.forEach(t=>t.addEventListener('click',()=>goTo(Number(t.dataset.tab))));
+
+const symbols=['💗','💕','🌸','✨','💖','🌷','🦋','❤️'];
+function floatingFlower(){
+  const el=document.createElement('div');el.className='floating';
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=Math.random()*100+'vw';el.style.fontSize=(15+Math.random()*21)+'px';
+  el.style.animationDuration=(7+Math.random()*7)+'s';document.body.appendChild(el);
+  setTimeout(()=>el.remove(),14000);
+}
+setInterval(floatingFlower,650);
+
+function toggleLetter(){
+  const letter=document.getElementById('letter');letter.classList.toggle('hidden');
+  document.getElementById('letterBtn').textContent=letter.classList.contains('hidden')?'Open your letter 💗':'Close your letter';
+}
+
+/* Music player setup */
+const music=document.getElementById('music');
+const playButton=document.getElementById('playButton');
+const musicStatus=document.getElementById('musicStatus');
+const seek=document.getElementById('seek');
+function formatTime(seconds){
+  if(!Number.isFinite(seconds))return '0:00';
+  const m=Math.floor(seconds/60),s=Math.floor(seconds%60);
+  return `${m}:${String(s).padStart(2,'0')}`;
+}
+function toggleMusic(){
+  if(music.paused){
+    music.play().then(()=>{playButton.textContent='⏸ Pause our song';musicStatus.textContent='Playing our song for you, babyyy. 💗';})
+    .catch(()=>{musicStatus.textContent='Could not play the song automatically. Try clicking play again!';});
+  }else{
+    music.pause();playButton.textContent='▶ Play our song';musicStatus.textContent='Paused — press play whenever you miss me. 💕';
+  }
+}
+function stopMusic(){music.pause();music.currentTime=0;playButton.textContent='▶ Play our song';}
+music.addEventListener('loadedmetadata',()=>{
+  document.getElementById('duration').textContent=formatTime(music.duration);
+});
+music.addEventListener('timeupdate',()=>{
+  document.getElementById('currentTime').textContent=formatTime(music.currentTime);
+  if(Number.isFinite(music.duration)&&music.duration>0)seek.value=(music.currentTime/music.duration)*100;
+});
+music.addEventListener('ended',()=>{playButton.textContent='▶ Play our song';musicStatus.textContent='Played with love. Play it again? 💗';});
+seek.addEventListener('input',()=>{if(Number.isFinite(music.duration))music.currentTime=(Number(seek.value)/100)*music.duration;});
+document.getElementById('volume').addEventListener('input',e=>music.volume=Number(e.target.value));
+music.volume=.7;
+
+/* Heart-catching game */
+let score=0,timeLeft=20,gameTimer=null,spawnTimer=null,gameRunning=false;
+const board=document.getElementById('gameBoard');
+function spawnHeart(){
+  if(!gameRunning)return;
+  const heart=document.createElement('button');
+  heart.type='button';heart.className='game-heart';heart.textContent=['💗','💖','💕','💘','❤️'][Math.floor(Math.random()*5)];
+  heart.setAttribute('aria-label','Catch heart');
+  const maxX=Math.max(5,board.clientWidth-55),maxY=Math.max(5,board.clientHeight-55);
+  heart.style.left=(Math.random()*maxX)+'px';heart.style.top=(Math.random()*maxY)+'px';
+  heart.style.margin='0';heart.style.padding='0';heart.style.background='transparent';heart.style.boxShadow='none';heart.style.border='0';
+  heart.onclick=()=>{
+    if(!gameRunning)return;
+    score++;document.getElementById('gameScore').textContent=score;
+    heart.remove();
+    if(score>=12)finishGame(true);
+    else spawnHeart();
+  };
+  board.appendChild(heart);
+  setTimeout(()=>{if(heart.isConnected&&gameRunning){heart.remove();spawnHeart();}},1250);
+}
+function startGame(){
+  clearInterval(gameTimer);clearTimeout(spawnTimer);
+  score=0;timeLeft=20;gameRunning=true;
+  document.getElementById('gameScore').textContent='0';
+  document.getElementById('gameTime').textContent='20';
+  document.getElementById('gameMessage').textContent='Go go gooo! Catch those hearts! 💞';
+  document.getElementById('gameStart').textContent='Restart game ↻';
+  board.innerHTML='';
+  spawnHeart();
+  gameTimer=setInterval(()=>{
+    timeLeft--;document.getElementById('gameTime').textContent=timeLeft;
+    if(timeLeft<=0)finishGame(false);
+  },1000);
+}
+function finishGame(won){
+  gameRunning=false;clearInterval(gameTimer);clearTimeout(spawnTimer);
+  board.innerHTML=won?
+    '<div style="padding:85px 12px;font-size:27px">💗 💖 💕<br><br>YOU CAUGHT MY HEART!<br>♾️</div>':
+    '<div style="padding:90px 15px;font-size:18px">💗 Time is up!<br>My heart is still yours. 🥺</div>';
+  document.getElementById('gameMessage').textContent=won?
+    'You collected all my love! Your reward: unlimited hugs from Shivans. 💋':
+    `You caught ${score} hearts! Try again, babyyy — there are more waiting. 🌸`;
+  document.getElementById('gameStart').textContent='Play again 💘';
+}
+
+/* Playful couple quiz */
+const quizQuestions=[
+ {q:"What should our perfect little date look like?",o:["Long drive + our favourite songs 🚗","Street food and endless talking 🌮","A cosy movie night together 🍿","Anything, as long as we're together 🥺"],f:["A playlist, your hand and a long drive. Dream date! 🚗💗","Sharing food and stealing bites from each other. Perfect! 😋","A blanket, a movie and you next to me. Cozyyy! 🍿","That's my favourite answer. You're my favourite plan. ❤️"]},
+ {q:"If I could send you one surprise right now, what would you pick?",o:["A big bouquet of flowers 💐","A handwritten love letter 💌","A cute teddy bear 🧸","A tight hug and forehead kiss 🫂"],f:["Flowers for my brightest flower. 🌷","A letter with a thousand things I feel for you. 💌","A teddy to hug until I can do it myself. 🧸","Saving this one for when I see you. One hug, coming up! 🥺"]},
+ {q:"What describes us best?",o:["Cute chaos 😂","Best friends who fell in love 💗","Two silly people, one big love 🫶","A forever kind of story ♾️"],f:["A little chaos makes our story more fun. 😂","My favourite kind of friendship and love. 💗","Two sillies, one universe. That's us! 🫶","And I hope we keep writing it together. ♾️"]},
+ {q:"Choose one thing we should do more often.",o:["Take more pictures together 📸","Go on little adventures 🌸","Have long late-night talks 🌙","Make more silly memories 🤭"],f:["More pictures, more moments to look back on. 📸","Let's make a thousand tiny adventures. 🌸","Our talks are my favourite place to get lost. 🌙","More laughter, more madness, more us. 🤭"]},
+ {q:"Final question: how much love should I send you?",o:["A little bit 💗","A whole lot 💖","More than the stars ✨","Till infinity and beyond ♾️"],f:["A little? I'm sending extra anyway. 😌","A whole lot, delivered daily. 💖","Even the stars can't count it. ✨","You already know the answer, my jaan. Infinity! ♾️💋"]}
+];
+let quizIndex=0,quizAnswered=false;
+function loadQuiz(){
+  const q=quizQuestions[quizIndex];quizAnswered=false;
+  document.getElementById('quizCount').textContent=`QUESTION ${quizIndex+1} OF ${quizQuestions.length}`;
+  document.getElementById('quizQuestion').textContent=q.q;
+  document.getElementById('quizFeedback').textContent='';
+  document.getElementById('quizNext').classList.add('hidden');
+  const wrap=document.getElementById('quizOptions');wrap.innerHTML='';
+  q.o.forEach((option,i)=>{
+    const b=document.createElement('button');b.className='quiz-option';b.textContent=option;
+    b.onclick=()=>{
+      if(quizAnswered)return;quizAnswered=true;b.classList.add('selected');
+      [...wrap.children].forEach(x=>x.disabled=true);
+      document.getElementById('quizFeedback').textContent=q.f[i];
+      document.getElementById('quizNext').textContent=quizIndex===quizQuestions.length-1?'See my final message 💋':'Next question 💕';
+      document.getElementById('quizNext').classList.remove('hidden');
+    };
+    wrap.appendChild(b);
+  });
+}
+function nextQuiz(){
+  quizIndex++;
+  if(quizIndex>=quizQuestions.length){
+    document.getElementById('quizCount').textContent='QUIZ COMPLETED 💗';
+    document.getElementById('quizQuestion').textContent='You are my favourite answer to every question.';
+    document.getElementById('quizOptions').innerHTML='<div style="font-size:42px;margin:18px">💗 💖 💕</div>';
+    document.getElementById('quizFeedback').textContent='Your prize: one lifetime supply of love, hugs and kisses from Shivans. I love you, Ananya! ♾️';
+    document.getElementById('quizNext').classList.add('hidden');
+    return;
+  }
+  loadQuiz();
+}
+loadQuiz();
+
+function finalSurprise(){
+  document.getElementById('final').classList.remove('hidden');
+  document.getElementById('final').scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
